@@ -18,6 +18,12 @@ typedef struct _Book {
 		struct _Book *next; //pointer to the next book element
 }Book;
 
+typedef struct _user {
+	unsigned int id;
+	char *name;
+	struct _user *next;
+}user;
+
 typedef struct _BookList {
 	 Book* list; // pointer to a list of struct Book.
 	 unsigned int length; // number of elements in the (Book*) List 
