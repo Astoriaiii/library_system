@@ -6,7 +6,7 @@ void user_register {
 	scanf("%s", input_name);
 	printf("Please enter a password:");
 	scanf("%s", password);
-	
+	register_check();
 }
 
 void register_check {
