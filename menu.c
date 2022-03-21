@@ -1,5 +1,6 @@
-#include<stdio.h>
+#include <stdio.h>
 
+//Initially list when user open the project
 void menu_initial(){
 	int initial_option;
 	printf("Please choose an option:")
@@ -9,9 +10,10 @@ void menu_initial(){
 	printf("4) Display all books");
 	printf("5) Quit");
 	printf(" Option:");
-	scanf("%d", initial_option);
+	scanf_s("%d", initial_option);
 }
 
+//Menu displayed for librarian to operate books
 void menu_librarian(){
 	int librarian_option;
 	printf("Please choose an option:")
@@ -21,9 +23,10 @@ void menu_librarian(){
 	printf("4) Display all books");
 	printf("5) Log out");
 	printf(" Option:");
-	scanf("%d", librarian_option);
+	scanf_s("%d", librarian_option);
 }
 
+//Menu displayed for user to operate books
 void menu_user(){
 	int user_option;
 	printf("Please choose an option:")
@@ -33,5 +36,5 @@ void menu_user(){
 	printf("4) Display all books");
 	printf("5) Log out");
 	printf(" Option:");
-	scanf("%d", user_option);
+	scanf_s("%d", user_option);
 }
