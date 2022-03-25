@@ -3,10 +3,10 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
-//#include <string.h>
+#include <string.h>
 #include "book_management.h"
 
-void add_node() {
+/*void add_node() {
     Book *head_Book;
     Book *p_Book;
     Book *q_Book;
@@ -21,6 +21,39 @@ void add_node() {
             q_Book->next = p_Book;
         }
     }
+}
+*/
+struct node* createNode(Book *book) {
+    node *p_node = (struct node*) calloc (1, sizeof(struct node));
+    Book *q_book;
+    if (p_node != NULL){
+        if (book != NULL) {
+            q_book = &(p_node->book);
+            q_book->id = book->id;
+            strcpy(q_book->title, book->title);
+            strcpy(q_book->authors, book->authors);
+            q_book->year = book->id;
+            q_book->copies = book->copies;
+        }
+        p_node->next = NULL;
+    }
+    return p_node;
+};
+
+
+struct node* add_node( node* head_node, Book *book) {
+    if (head_node != NULL) {
+        struct node* p_node = createNode(book);
+        Book *q_book = &(p_node->book);
+        if (p_node != NULL) {
+            node *q_node = head_node;
+            while (q_node->next !=NULL)
+                q_node = q_node->next;
+            q_node->next = p_node;
+            return p_node;
+        }
+    }
+    return NULL;
 }
 
 void delete_node() {
