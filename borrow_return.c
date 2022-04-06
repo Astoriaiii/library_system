@@ -23,25 +23,10 @@
     }
 }
 */
-struct node* createNode(Book *book) {
-    node *p_node = (struct node*) calloc (1, sizeof(struct node));
-    Book *q_book;
-    if (p_node != NULL){
-        if (book != NULL) {
-            q_book = &(p_node->book);
-            q_book->id = book->id;
-            strcpy(q_book->title, book->title);
-            strcpy(q_book->authors, book->authors);
-            q_book->year = book->id;
-            q_book->copies = book->copies;
-        }
-        p_node->next = NULL;
-    }
-    return p_node;
-};
 
 
-struct node* add_node( node* head_node, Book *book) {
+
+/*struct node* add_node( node* head_node, Book *book) {
     if (head_node != NULL) {
         struct node* p_node = createNode(book);
         Book *q_book = &(p_node->book);
@@ -54,14 +39,14 @@ struct node* add_node( node* head_node, Book *book) {
         }
     }
     return NULL;
-}
+}*/
 
-void delete_node() {
+Book* delete_node(Book* head_node, Book *book) {
     Book *p_Book;
     Book *q_Book;
-    Book *head_Book;
-    p_Book = head_Book;
-    if (head_Book == NULL) {
+    //Book *head_Book;
+    p_Book = head_node;
+    if (head_node == NULL) {
         printf("No more book for remove");
     }
     while (p_Book->id != q_Book->id && p_Book->next != NULL){
@@ -77,6 +62,7 @@ void delete_node() {
         }
         free(p_Book);
     }
+    return head_node;
 }
 
 
@@ -88,7 +74,7 @@ void borrow_book(){
     scanf ("%d", p_Book->id);
     delete_node(list_public);
     list_public->length = list_public->length - 1;
-    add_node(list_user);
+    add_node(list_user,p_Book);
     list_user->length = list_user->length + 1;
 }
 
@@ -100,7 +86,7 @@ void return_book(){
     scanf ("%d", p_Book->id);
     delete_node(list_user);
     list_user->length = list_user->length - 1;
-    add_node(list_public);
+    add_node(list_public, p_Book);
     list_public->length = list_public->length + 1;
-}
+}*/
 
