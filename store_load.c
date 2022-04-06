@@ -86,7 +86,6 @@ void display(){
 	Book* temp_Book;
 	temp_Book = head_Book->next;
 	while(temp_Book){
-printf("55");
 		printf("%d\t%s\t%s\t%d\t%d\n", temp_Book->id, temp_Book->title, temp_Book->authors, temp_Book->year, temp_Book->copies);
 		temp_Book = temp_Book->next;
 	}
