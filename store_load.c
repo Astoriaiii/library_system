@@ -6,8 +6,8 @@
 //#include <stdlib.h>
 #include <string.h>
 #include "book_management.h"
-#include "borrow_return.c"
-
+//#include "borrow_return.c"
+ Book *head_Book;
 /*
 //store information from book link list to file
 int store_books(FILE *file, Book *head_Book) {
@@ -47,54 +47,73 @@ char copies[20];
         printf("Error occurs when open the file\n");
         return -1;
     }
-        Book *head_Book, *temp_Book;
+       
         head_Book = (Book*)malloc(sizeof(Book));
-        head_Book->next = (Book*)malloc(sizeof(Book));
-        temp_Book = head_Book;
-        Book *q_Book = (Book*)malloc(sizeof(Book));
-        temp_Book->next= (Book*)malloc(sizeof(Book));
+	head_Book->next = NULL;
+        //head_Book->next = (Book*)malloc(sizeof(Book));
+        //temp_Book = head_Book;
+        Book *end_Book = (Book*)malloc(sizeof(Book));
+ 
+	
+	head_Book  = end_Book;
+	
+        //temp_Book->next= (Book*)malloc(sizeof(Book));
         //temp_Book = (Book*)malloc(sizeof(Book));
-        while (temp_Book) { 
+        while (end_Book != NULL) { 
+		Book* q_Book =  (Book*)malloc(sizeof(Book));
                 //temp_Book = (Book*)malloc(sizeof(Book));
 		title=(char*)malloc(sizeof(char)*100);
 		authors=(char*)malloc(sizeof(char)*100);
             a = fscanf(file,"%s %s\t%s\t%s\t%s", id, title, authors, year, copies);
 fgetc(file);
             if (a != 5){
-		free((void*)temp_Book);
+		free((void*)end_Book);
+printf("3");
 		break;
-                //printf("3");
-            }
+                
+           }
 a = atoi(id);
-temp_Book->id = a;
+q_Book->id = a;
 a = atoi(year);
-temp_Book->year = a;
+q_Book->year = a;
 a = atoi(copies);
-temp_Book->copies = a;
+q_Book->copies = a;
              //temp_Book->id = atoi(temp_Book->id);
             //temp_Book->year = atoi(temp_Book->year);
             //temp_Book->copies = atoi(temp_Book->copies);
-            temp_Book->title = (char*)malloc(100*sizeof(char));
-            temp_Book->authors = (char*)malloc(100*sizeof(char));
-	    strcpy(temp_Book->title,title);
-	    strcpy(temp_Book->authors,authors);
+            q_Book->title = (char*)malloc(100*sizeof(char));
+            q_Book->authors = (char*)malloc(100*sizeof(char));
+	    strcpy(q_Book->title,title);
+	    strcpy(q_Book->authors,authors);
 //printf("%d\t%d\n", temp_Book->year, temp_Book->copies);
-	   printf("%d\t%s\t%s\t%d\t%d\n", temp_Book->id, temp_Book->title, temp_Book->authors, temp_Book->year, temp_Book->copies);
-q_Book = temp_Book;
-temp_Book->next = (Book*)malloc(sizeof temp_Book->next);
-	temp_Book = temp_Book->next;
+	   
+	    //Book *q_Book = (Book*)malloc(sizeof(Book));
+q_Book->next= NULL;
+end_Book -> next = q_Book;
+end_Book = end_Book ->next;
+printf("%d\t%s\t%s\t%d\t%d\n", end_Book->id, end_Book->title, end_Book->authors, end_Book->year, end_Book->copies);
+//temp_Book->next = (Book*)malloc(sizeof temp_Book->next);
+	//temp_Book->next = q_Book;      
+	//q_Book = temp_Book;
             //if (head_Book == NULL){
               //  head_Book->next = temp_Book;
            // }
             //else{
               //  p_Book->next = temp_Book;
-
     }
 	fclose(file);
     return 0;
 }
 
-
+void display(){
+	Book* temp_Book;
+	temp_Book = head_Book->next;
+	while(temp_Book){
+printf("55");
+		printf("%d\t%s\t%s\t%d\t%d\n", temp_Book->id, temp_Book->title, temp_Book->authors, temp_Book->year, temp_Book->copies);
+		temp_Book = temp_Book->next;
+	}
+}
 /*
 void readBookInFile (struct node* head_node) {
     FILE *fp = fopen("book.txt","a+");
