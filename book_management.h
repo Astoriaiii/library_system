@@ -23,11 +23,18 @@ typedef struct _BookList {
 	 unsigned int length; // number of elements in the (Book*) List 
 }BookList;
 
-BookList* all_books;
+BookList* all_books = NULL;
 
+//get book information from input
 Book* GetBook(unsigned int id, char* title, char* authors, unsigned int year, unsigned int copies);
-
+//malloc space for booklist and initialize
+BookList* GetBookList();
+//prepare for book management(add, search)
 Book* CopyBook(Book book);
+//release space for deleted book
+void DeleteBook(Book* book);
+//initialize system and clear data
+void DeleteBookList(BookList* list);
 
 //saves the database of books in the specified file
 //returns 0 if books were stored correctly, or an error code otherwise
