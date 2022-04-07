@@ -18,17 +18,16 @@ typedef struct _Book {
 		struct _Book *next; //pointer to the next book element
 }Book;
 
-typedef struct _user {
-	unsigned int id;
-	char *name;
-	struct _user *next;
-}user;
-
 typedef struct _BookList {
 	 Book* list; // pointer to a list of struct Book.
 	 unsigned int length; // number of elements in the (Book*) List 
 }BookList;
 
+BookList* all_books;
+
+Book* GetBook(unsigned int id, char* title, char* authors, unsigned int year, unsigned int copies);
+
+Book* CopyBook(Book book);
 
 //saves the database of books in the specified file
 //returns 0 if books were stored correctly, or an error code otherwise
