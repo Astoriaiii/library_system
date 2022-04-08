@@ -18,17 +18,25 @@ int main(int argc, char* argv[])
 {
 	//argv[1] book file
 	//argv[2] user file
-	FILE* file = fopen(argv[1], "r");
+	FILE* file;
+	file = fopen(argv[1], "r");
+	if(!file){
+	file = fopen(argv[1],"w+");
+}
 	if (load_books(file))
 	{
-		printf("Book file load false\n");
+		printf("Book file load false. Please print books.txt\n");
 		exit(1);
 	}
 	fclose(file);
 	file = fopen(argv[2], "r");
+	file = fopen(argv[2], "r");
+	if(!file){
+	file = fopen(argv[2],"w+");
+}
 	if (load_users(file))
 	{
-		printf("User file load false\n");
+		printf("User file load false. Please print users.txt\n");
 		exit(1);
 	}
 	fclose(file);
