@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
 }
 	if (load_books(file))
 	{
-		printf("Book file load false. Please print books.txt\n");
+		printf("Book file load false.\n");
 		exit(1);
 	}
 	fclose(file);
@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
 }
 	if (load_users(file))
 	{
-		printf("User file load false. Please print users.txt\n");
+		printf("User file load false.\n");
 		exit(1);
 	}
 	fclose(file);
