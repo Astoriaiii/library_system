@@ -12,4 +12,6 @@ run in linux
 
 command line: ./Management books.txt users.txt
 
+![image](https://github.com/Astoriaiii/library_system/blob/main/git_commit.png)
+
 URL:https://github.com/Astoriaiii/library_system
